@@ -34,7 +34,7 @@ module RocketPants
     def self.valid_for?(response, allowed, disallowed)
       body = response.decoded_body
       return false if body.blank?
-      body = body.to_hash
+      body = body.to_h
       return false if body.has_key?("error")
       allowed.all? { |f| body.has_key?(f) } && !disallowed.any? { |f| body.has_key?(f) }
     end
